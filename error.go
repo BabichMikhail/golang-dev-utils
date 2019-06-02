@@ -7,22 +7,18 @@ import (
 func AssertNoError(args ...interface{}) interface{} {
 	AssertTrue(len(args) > 0 && len(args) < 3, "Unsupported argument length")
 
+	var result interface{}
 	for _, obj := range args {
 		switch obj.(type) {
 		case error:
-			err := args[0]
-			if err != nil {
-				panic(err)
+			panic(obj)
+		default:
+			//noinspection GoNilness
+			if obj != nil {
+				result = obj
 			}
 			break
-		default:
-			break
 		}
-	}
-
-	var result interface{}
-	if len(args) == 2 {
-		result = args[0]
 	}
 
 	return result
