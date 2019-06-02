@@ -1,5 +1,9 @@
 package utils
 
+import (
+	"sort"
+)
+
 type IElement interface{}
 type IElementSlice []IElement
 
@@ -19,4 +23,11 @@ func IntRange(count int) []int {
 		slice[i] = i
 	}
 	return slice
+}
+
+func Revert(slice sort.Interface) {
+	length := slice.Len()
+	for i := 0; i < length/2; i++ {
+		slice.Swap(i, length-i-1)
+	}
 }
