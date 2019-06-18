@@ -4,6 +4,6 @@ import (
 	"io/ioutil"
 )
 
-func ReadAllFile(filePath string) []byte {
-	return AssertNoError(ioutil.ReadFile(filePath)).([]byte)
+func GetFileContents(filePath string) []byte {
+	return CheckNoError(ioutil.ReadFile(filePath)).([]byte)
 }

@@ -5,9 +5,9 @@ import (
 )
 
 func ToJson(data interface{}) []byte {
-	return AssertNoError(json.Marshal(data)).([]byte)
+	return CheckNoError(json.Marshal(data)).([]byte)
 }
 
 func ToStruct(jsonStr []byte, data interface{}) {
-	AssertNoError(json.Unmarshal([]byte(jsonStr), data))
+	CheckNoError(json.Unmarshal([]byte(jsonStr), data))
 }

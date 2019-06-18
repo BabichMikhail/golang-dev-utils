@@ -6,8 +6,8 @@ import (
     "net/url"
 )
 
-func GetHttpContents(rawUrl string) string {
-    return string(AssertNoError(ioutil.ReadAll(AssertNoError(http.Get(rawUrl)).(*http.Response).Body)).([]byte))
+func GetHttpContents(rawUrl string) []byte {
+    return CheckNoError(ioutil.ReadAll(CheckNoError(http.Get(rawUrl)).(*http.Response).Body)).([]byte)
 }
 
 func IsUrl(rawUrl string) bool {

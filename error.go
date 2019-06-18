@@ -4,8 +4,8 @@ import (
 	"errors"
 )
 
-func AssertNoError(args ...interface{}) interface{} {
-	AssertTrue(len(args) > 0 && len(args) < 3, "Unsupported argument length")
+func CheckNoError(args ...interface{}) interface{} {
+	CheckTrue(len(args) > 0 && len(args) < 3, "Unsupported argument length")
 
 	var result interface{}
 	for _, obj := range args {
@@ -28,7 +28,7 @@ func ThrowError(message string) {
 	panic(errors.New(message))
 }
 
-func AssertTrue(exp bool, message string) {
+func CheckTrue(exp bool, message string) {
 	if !exp {
 		ThrowError(message)
 	}
