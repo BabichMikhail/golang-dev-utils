@@ -1,17 +1,21 @@
 package utils
 
-func MaxInt(a, b int) int {
-	if a > b {
-		return a
+func selectIntVal(cmp func (int, int) bool, a int, b ...int) int {
+	for _, v := range b {
+		if cmp(a, v) {
+			a = v
+		}
 	}
-	return b
+
+	return a
 }
 
-func MinInt(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
+func MaxInt(a int, b ...int) int {
+	return selectIntVal(func (a, b int) bool { return a > b }, a, b...)
+}
+
+func MinInt(a int, b ...int) int {
+	return selectIntVal(func (a, b int) bool { return a < b }, a, b...)
 }
 
 func AbsInt(a int) int {
