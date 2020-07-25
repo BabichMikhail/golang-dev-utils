@@ -1,6 +1,6 @@
 package utils
 
-func selectIntVal(cmp func (int, int) bool, a int, b ...int) int {
+func selectIntVal(cmp func(int, int) bool, a int, b ...int) int {
 	for _, v := range b {
 		if cmp(a, v) {
 			a = v
@@ -11,11 +11,11 @@ func selectIntVal(cmp func (int, int) bool, a int, b ...int) int {
 }
 
 func MaxInt(a int, b ...int) int {
-	return selectIntVal(func (a, b int) bool { return a > b }, a, b...)
+	return selectIntVal(func(a, b int) bool { return a > b }, a, b...)
 }
 
 func MinInt(a int, b ...int) int {
-	return selectIntVal(func (a, b int) bool { return a < b }, a, b...)
+	return selectIntVal(func(a, b int) bool { return a < b }, a, b...)
 }
 
 func AbsInt(a int) int {
